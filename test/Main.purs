@@ -4,7 +4,8 @@ import Prelude
 
 import Data.Maybe (Maybe(..))
 import Effect (Effect)
-import Main (calculate, reverseWords)
+import Odai.Odai1 (calculate)
+import Odai.Odai2 (reverseWords)
 import Test.Unit (suite, test)
 import Test.Unit.Assert as Assert
 import Test.Unit.Main (runTest)
