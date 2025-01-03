@@ -4,11 +4,16 @@ import Prelude
 
 import Data.Maybe (Maybe(..))
 import Effect (Effect)
+import Effect.Class (liftEffect)
 import Odai.Odai1 (calculate)
 import Odai.Odai2 (reverseWords)
+import Odai.Odai3 (Tasks, addTask, completeTask, showTasks)
 import Test.Unit (suite, test)
 import Test.Unit.Assert as Assert
 import Test.Unit.Main (runTest)
+
+testTasks :: Tasks
+testTasks = [{index: 1, description: "hoge"}, {index: 2, description: "fuga"}]
 
 main :: Effect Unit
 main = do
@@ -36,3 +41,15 @@ main = do
       test "reverseWords" do
         Assert.equal ["olleh", "dlrow", "tpircserup"]
           $ reverseWords ["hello", "world", "purescript"]
+    suite "tasks" do
+      test "addTask" do
+        Assert.equal testTasks
+          $ addTask [{index: 1, description: "hoge"}] "fuga"
+      test "completeTask" do
+        Assert.equal [{index: 1, description: "hoge"}]
+          $ completeTask testTasks 2
+        Assert.equal [{index: 2, description: "fuga"}]
+          $ completeTask testTasks 1
+      test "showTasks" do
+        -- 簡易的なテスト
+        liftEffect $ showTasks testTasks
