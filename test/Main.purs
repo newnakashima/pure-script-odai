@@ -8,6 +8,7 @@ import Effect.Class (liftEffect)
 import Odai.Odai1 (calculate)
 import Odai.Odai2 (reverseWords)
 import Odai.Odai3 (Tasks, addTask, completeTask, showTasks)
+import Odai.Odai4 (fibonacci, fibonacci2)
 import Test.Unit (suite, test)
 import Test.Unit.Assert as Assert
 import Test.Unit.Main (runTest)
@@ -53,3 +54,10 @@ main = do
       test "showTasks" do
         -- 簡易的なテスト
         liftEffect $ showTasks testTasks
+    suite "fibonacci" do
+      test "fibonacci" do
+        Assert.equal [0, 1, 1, 2, 3, 5, 8, 13, 21, 34]
+          $ fibonacci 10
+      test "fibonacci2" do
+        Assert.equal [0, 1, 1, 2, 3, 5, 8, 13, 21, 34]
+          $ fibonacci2 10
