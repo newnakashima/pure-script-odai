@@ -9,6 +9,7 @@ import Odai.Odai1 (calculate)
 import Odai.Odai2 (reverseWords)
 import Odai.Odai3 (Tasks, addTask, completeTask, showTasks)
 import Odai.Odai4 (fibonacci, fibonacci2)
+import Odai.Odai5 (filterOdd)
 import Test.Unit (suite, test)
 import Test.Unit.Assert as Assert
 import Test.Unit.Main (runTest)
@@ -61,3 +62,7 @@ main = do
       test "fibonacci2" do
         Assert.equal [0, 1, 1, 2, 3, 5, 8, 13, 21, 34]
           $ fibonacci2 10
+    suite "filterOdd" do
+      test "filterOdd" do
+        Assert.equal [1, 3, 5]
+          $ filterOdd [1, 2, 3, 4, 5]
